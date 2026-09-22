@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="S.R Mobile — Your trusted online store for smartphones, cases, chargers, power banks and genuine mobile accessories at great prices." />
+  <meta name="keywords" content="S.R Mobile, smartphones, iPhone, Samsung, Xiaomi, Oppo, Vivo, accessories, power bank, earphones" />
+  <title>S.R Mobile — Smartphones & Accessories Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+<base target="_blank">
+</head>
+<body>
+
+  <!-- ===== Loading Screen ===== -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-phone">📱</div>
+    <p>Loading S.R Mobile…</p>
+  </div>
+
+  <!-- ===== Header / Navigation ===== -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="#home" class="logo" aria-label="S.R Mobile home">
+        <span class="logo-icon">📱</span> S.R <span>Mobile</span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Main navigation">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#shop" class="nav-link">Shop</a>
+        <a href="#categories" class="nav-link">Categories</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Search -->
+        <div class="search-wrap">
+          <input type="search" id="searchInput" class="search-input" placeholder="Search products…" aria-label="Search products" />
+          <button class="icon-btn" id="searchBtn" aria-label="Search">🔍</button>
+        </div>
+        <!-- Theme toggle -->
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+        <!-- Cart -->
+        <button class="icon-btn cart-btn" id="cartBtn" aria-label="Open shopping cart">
+          🛒<span class="cart-count" id="cartCount">0</span>
+        </button>
+        <!-- Hamburger -->
+        <button class="icon-btn hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="home">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="container hero-content">
+      <p class="hero-tag">Latest Phones • Genuine Accessories • Great Prices</p>
+      <h1>S.R <span>Mobile</span></h1>
+      <p class="hero-sub">Your Trusted Mobile &amp; Accessories Store</p>
+      <div class="hero-btns">
+        <a href="#shop" class="btn btn-primary">🛍️ Shop Now</a>
+        <a href="#offers" class="btn btn-outline">🔥 View Deals</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>500+</strong><span>Products</span></div>
+        <div><strong>10K+</strong><span>Happy Customers</span></div>
+        <div><strong>100%</strong><span>Genuine Items</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Categories ===== -->
+  <section class="section" id="categories">
+    <div class="container">
+      <h2 class="section-title">Shop by Category</h2>
+      <p class="section-sub">Pick a brand or accessory type to filter products instantly.</p>
+      <div class="category-grid" id="categoryGrid">
+        <button class="category-card" data-cat="iPhone"><span class="cc-icon">🍎</span>iPhone</button>
+        <button class="category-card" data-cat="Samsung"><span class="cc-icon">🌌</span>Samsung</button>
+        <button class="category-card" data-cat="Xiaomi"><span class="cc-icon">🟠</span>Xiaomi</button>
+        <button class="category-card" data-cat="Oppo"><span class="cc-icon">🟢</span>Oppo</button>
+        <button class="category-card" data-cat="Vivo"><span class="cc-icon">🔵</span>Vivo</button>
+        <button class="category-card" data-cat="Nokia"><span class="cc-icon">📞</span>Nokia</button>
+        <button class="category-card" data-cat="Accessories"><span class="cc-icon">🎧</span>Accessories</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Shop / Products ===== -->
+  <section class="section section-alt" id="shop">
+    <div class="container">
+      <h2 class="section-title">Our Products</h2>
+
+      <!-- Filter toolbar -->
+      <div class="toolbar">
+        <input type="search" id="toolbarSearch" placeholder="🔍 Search products…" aria-label="Search products" />
+        <select id="brandFilter" aria-label="Filter by brand">
+          <option value="all">All Brands</option>
+          <option value="iPhone">iPhone</option>
+          <option value="Samsung">Samsung</option>
+          <option value="Xiaomi">Xiaomi</option>
+          <option value="Oppo">Oppo</option>
+          <option value="Vivo">Vivo</option>
+          <option value="Nokia">Nokia</option>
+          <option value="Accessories">Accessories</option>
+        </select>
+        <div class="price-filter">
+          <label for="priceRange">Max price: <strong id="priceLabel">$2000</strong></label>
+          <input type="range" id="priceRange" min="10" max="2000" value="2000" step="10" />
+        </div>
+        <select id="sortSelect" aria-label="Sort products">
+          <option value="popular">Sort: Popularity</option>
+          <option value="newest">Sort: Newest</option>
+          <option value="price-asc">Price: Low → High</option>
+          <option value="price-desc">Price: High → Low</option>
+        </select>
+        <button class="btn btn-ghost" id="clearFilters">Clear Filters</button>
+      </div>
+
+      <p class="result-count" id="resultCount"></p>
+      <div class="product-grid" id="productGrid"></div>
+      <div class="empty-state" id="emptyState" hidden>
+        <span>🫥</span>
+        <h3>No products found</h3>
+        <p>Try a different search or clear the filters.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Featured ===== -->
+  <section class="section" id="featured">
+    <div class="container">
+      <h2 class="section-title">⭐ Featured Products</h2>
+      <div class="product-grid product-grid-4" id="featuredGrid"></div>
+    </div>
+  </section>
+
+  <!-- ===== Special Offers ===== -->
+  <section class="section offers" id="offers">
+    <div class="container offers-inner">
+      <div class="offers-text">
+        <p class="offers-badge">🔥 LIMITED TIME</p>
+        <h2>Mega Accessories Sale</h2>
+        <p>Up to <strong>40% off</strong> on chargers, cables, power banks &amp; earphones. Hurry before stock runs out!</p>
+        <div class="countdown" id="countdown" aria-label="Offer countdown">
+          <div><strong id="cdDays">00</strong><span>Days</span></div>
+          <div><strong id="cdHours">00</strong><span>Hours</span></div>
+          <div><strong id="cdMins">00</strong><span>Mins</span></div>
+          <div><strong id="cdSecs">00</strong><span>Secs</span></div>
+        </div>
+        <a href="#shop" class="btn btn-primary" id="offersBtn">Grab the Deals</a>
+      </div>
+      <div class="offers-art" aria-hidden="true">⚡🎧🔌</div>
+    </div>
+  </section>
+
+  <!-- ===== New Arrivals ===== -->
+  <section class="section section-alt" id="new">
+    <div class="container">
+      <h2 class="section-title">🆕 New Arrivals</h2>
+      <div class="product-grid product-grid-4" id="newGrid"></div>
+    </div>
+  </section>
+
+  <!-- ===== Reviews ===== -->
+  <section class="section" id="reviews">
+    <div class="container">
+      <h2 class="section-title">What Customers Say</h2>
+      <div class="reviews-grid">
+        <article class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>“Bought my Galaxy S25 here — best price in town and it arrived in 2 days. Totally genuine!”</p>
+          <footer>— Ahmed R., Dhaka</footer>
+        </article>
+        <article class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>“The 65W fast charger is amazing quality. S.R Mobile support even helped me pick the right cable.”</p>
+          <footer>— Maria S., Chattogram</footer>
+        </article>
+        <article class="review-card">
+          <div class="stars">★★★★☆</div>
+          <p>“Great shop for accessories. Cases fit perfectly and delivery was super fast.”</p>
+          <footer>— Tanvir H., Sylhet</footer>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== About ===== -->
+  <section class="section section-alt" id="about">
+    <div class="container about-inner">
+      <div>
+        <h2 class="section-title">About S.R Mobile</h2>
+        <p>S.R Mobile is a trusted destination for the latest smartphones and genuine accessories. From flagship iPhones to budget-friendly Xiaomi devices — every product is quality-checked, fairly priced and backed by friendly support.</p>
+        <ul class="about-list">
+          <li>✅ 100% genuine products with warranty</li>
+          <li>🚚 Fast nationwide delivery</li>
+          <li>💬 Dedicated customer support</li>
+          <li>🔁 Easy replacement policy</li>
+        </ul>
+      </div>
+      <div class="about-art" aria-hidden="true">🛡️📦💯</div>
+    </div>
+  </section>
+
+  <!-- ===== Newsletter ===== -->
+  <section class="section newsletter">
+    <div class="container newsletter-inner">
+      <h2>📬 Stay in the Loop</h2>
+      <p>Subscribe for new arrivals, flash deals and exclusive discounts.</p>
+      <form id="newsletterForm" class="newsletter-form" novalidate>
+        <input type="email" id="newsletterEmail" placeholder="Enter your email" aria-label="Email address" required />
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section class="section section-alt" id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <div class="contact-grid">
+        <div class="contact-card"><span>📞</span><h3>Phone</h3><p>+880 1XXX-XXXXXX</p></div>
+        <div class="contact-card"><span>💬</span><h3>WhatsApp</h3><a class="btn btn-whatsapp" href="https://wa.me/8801XXXXXXXXX" target="_blank" rel="noopener">Chat on WhatsApp</a></div>
+        <div class="contact-card"><span>✉️</span><h3>Email</h3><p>support@srmobile.example.com</p></div>
+        <div class="contact-card"><span>📍</span><h3>Store Address</h3><p>Shop 12, Mobile Market Road (placeholder)</p></div>
+        <div class="contact-card"><span>🕒</span><h3>Business Hours</h3><p>Sat–Thu: 10 AM – 9 PM<br />Friday: 3 PM – 9 PM</p></div>
+        <div class="contact-card admin-card"><span>🛠️</span><h3>Owner?</h3><button class="btn btn-ghost" id="adminOpenBtn">Open Admin Demo</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <a href="#home" class="logo"><span class="logo-icon">📱</span> S.R <span>Mobile</span></a>
+        <p>Your trusted mobile &amp; accessories store.</p>
+      </div>
+      <nav aria-label="Footer navigation">
+        <a href="#home">Home</a><a href="#shop">Shop</a><a href="#categories">Categories</a><a href="#contact">Contact</a>
+      </nav>
+      <p class="copyright">© <span id="year"></span> S.R Mobile. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ===== Cart Drawer ===== -->
+  <div class="overlay" id="overlay" hidden></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="cart-head">
+      <h3>🛒 Your Cart</h3>
+      <button class="icon-btn" id="cartClose" aria-label="Close cart">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-empty" id="cartEmpty">
+      <span>🛒</span>
+      <p>Your cart is empty.<br />Add some great products!</p>
+      <button class="btn btn-primary" id="emptyShopBtn">Start Shopping</button>
+    </div>
+    <div class="cart-foot" id="cartFoot">
+      <div class="cart-total-row"><span>Subtotal</span><strong id="cartSubtotal">$0.00</strong></div>
+      <div class="cart-total-row"><span>Delivery</span><strong id="cartDelivery">$0.00</strong></div>
+      <div class="cart-total-row total"><span>Total</span><strong id="cartTotal">$0.00</strong></div>
+      <button class="btn btn-primary btn-block" id="checkoutBtn">Proceed to Checkout →</button>
+    </div>
+  </aside>
+
+  <!-- ===== Product Details Modal ===== -->
+  <div class="modal" id="productModal" aria-hidden="true" role="dialog" aria-label="Product details">
+    <div class="modal-box modal-product">
+      <button class="modal-close" data-close aria-label="Close">✕</button>
+      <div id="productModalBody"></div>
+    </div>
+  </div>
+
+  <!-- ===== Checkout Modal ===== -->
+  <div class="modal" id="checkoutModal" aria-hidden="true" role="dialog" aria-label="Checkout">
+    <div class="modal-box">
+      <button class="modal-close" data-close aria-label="Close">✕</button>
+      <div id="checkoutStep">
+        <h3>🧾 Checkout</h3>
+        <div class="order-summary" id="orderSummary"></div>
+        <form id="checkoutForm" novalidate>
+          <div class="form-row">
+            <label>Full Name *<input type="text" id="coName" placeholder="e.g. Rahim Uddin" required /></label>
+            <label>Phone Number *<input type="tel" id="coPhone" placeholder="01XXXXXXXXX" required /></label>
+          </div>
+          <label>Email *<input type="email" id="coEmail" placeholder="you@example.com" required /></label>
+          <label>Delivery Address *<textarea id="coAddress" rows="2" placeholder="House, Road, Area" required></textarea></label>
+          <label>City *<input type="text" id="coCity" placeholder="e.g. Dhaka" required /></label>
+          <p class="form-error" id="checkoutError" role="alert"></p>
+          <button type="submit" class="btn btn-primary btn-block">Place Order — <span id="checkoutTotal">$0.00</span></button>
+          <p class="demo-note">🧪 Demo checkout — no real payment is processed.</p>
+        </form>
+      </div>
+      <div id="orderSuccess" hidden>
+        <div class="success-box">
+          <span class="success-icon">🎉</span>
+          <h3>Order Placed Successfully!</h3>
+          <p>Thank you for shopping with S.R Mobile.<br />Your order number is:</p>
+          <p class="order-number" id="orderNumber"></p>
+          <p class="demo-note">This is a front-end demo — no real order or payment was processed.</p>
+          <button class="btn btn-primary" data-close>Continue Shopping</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Admin Modal (Front-end Demo) ===== -->
+  <div class="modal" id="adminModal" aria-hidden="true" role="dialog" aria-label="Admin panel">
+    <div class="modal-box modal-admin">
+      <button class="modal-close" data-close aria-label="Close">✕</button>
+      <h3>🛠️ Admin Panel <span class="demo-badge">FRONT-END DEMO</span></h3>
+      <p class="demo-note">Demo only — real product management needs a backend &amp; authentication. Changes are stored in your browser (localStorage).</p>
+      <form id="adminForm" class="admin-form" novalidate>
+        <input type="hidden" id="admId" />
+        <div class="form-row">
+          <label>Product Name *<input type="text" id="admName" required /></label>
+          <label>Brand *<select id="admBrand">
+            <option>iPhone</option><option>Samsung</option><option>Xiaomi</option><option>Oppo</option><option>Vivo</option><option>Nokia</option><option>Accessories</option>
+          </select></label>
+        </div>
+        <div class="form-row">
+          <label>Price ($) *<input type="number" id="admPrice" min="1" step="0.01" required /></label>
+          <label>Old Price ($)<input type="number" id="admOldPrice" min="0" step="0.01" placeholder="Optional" /></label>
+        </div>
+        <div class="form-row">
+          <label>Stock *<input type="number" id="admStock" min="0" required /></label>
+          <label>Image<input type="file" id="admImage" accept="image/*" /></label>
+        </div>
+        <label>Description<textarea id="admDesc" rows="2" placeholder="Short product description"></textarea></label>
+        <div class="admin-actions">
+          <button type="submit" class="btn btn-primary" id="admSubmit">➕ Add Product</button>
+          <button type="button" class="btn btn-ghost" id="admCancel" hidden>Cancel Edit</button>
+        </div>
+      </form>
+      <h4>Current Products (<span id="admCount">0</span>)</h4>
+      <div class="admin-list" id="adminList"></div>
+    </div>
+  </div>
+
+  <!-- ===== Toast & Back-to-top ===== -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
